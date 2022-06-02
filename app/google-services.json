@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1065670366485",
+    "project_id": "loginsignupkotlin-nathit",
+    "storage_bucket": "loginsignupkotlin-nathit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065670366485:android:6b985f9ac0b3eb3f96051c",
+        "android_client_info": {
+          "package_name": "com.nathit.loginsignup_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065670366485-soanj8m3fgc96inc76vdvf20oes9otsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nathit.loginsignup_kotlin",
+            "certificate_hash": "9af2fb7e0ecab43cd52d1a624f4891824b253989"
+          }
+        },
+        {
+          "client_id": "1065670366485-5na3to69jfljthsdu46ihhmjpkl8f6or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBomtZQ57ILi92SKFApY4k2xttUL9DHvN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065670366485-5na3to69jfljthsdu46ihhmjpkl8f6or.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
