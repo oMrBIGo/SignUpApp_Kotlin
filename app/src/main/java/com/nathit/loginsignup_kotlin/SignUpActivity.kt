@@ -9,7 +9,11 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.nathit.loginsignup_kotlin.databinding.ActivitySignUpBinding
+import com.nathit.loginsignup_kotlin.model.UserModel
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -21,10 +25,15 @@ class SignUpActivity : AppCompatActivity() {
 
     //ProgressDialog
     private lateinit var progressDialog: ProgressDialog
+
     //FirebaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseUser: FirebaseUser
     private var email = ""
     private var  password = ""
+
+    //FirebaseRealtime
+    private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +54,9 @@ class SignUpActivity : AppCompatActivity() {
 
         //init firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
+
+        //init firebaseRealtime
+        dbRef = FirebaseDatabase.getInstance().getReference("Users")
 
         //handle click, begin sign up
         binding.SignUpBtn.setOnClickListener {
@@ -90,6 +102,9 @@ class SignUpActivity : AppCompatActivity() {
                 val email = firebaseUser!!.email
                 Toast.makeText(this, "Account created with email $email", Toast.LENGTH_SHORT).show()
 
+                //add Data to firebase realtime
+                realtimeAddUser()
+
                 //open profile
                 startActivity(Intent(this, ProfileActivity::class.java))
                 finish()
@@ -99,6 +114,23 @@ class SignUpActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "SignUp Failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
+
+    }
+
+    private fun realtimeAddUser() {
+        ///TODO("realtimeAddUser||เพิ่มผู้ใช้งานลงในฐานข้อมูล firebase Realtime")
+        //create id user to firebaseRealtime
+        val id = firebaseAuth.uid!!
+        //connect Model (UserModel)
+        val userModel = UserModel(id, email, password)
+
+        dbRef.child(id).setValue(userModel)
+            .addOnCompleteListener {
+                Toast.makeText(this, "Login successfully", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener { err ->
+                Toast.makeText(this, "Login Error ${err.message} ", Toast.LENGTH_LONG).show()
+            }
+
 
     }
 
