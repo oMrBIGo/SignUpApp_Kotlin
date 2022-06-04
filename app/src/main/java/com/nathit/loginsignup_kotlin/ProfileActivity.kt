@@ -50,7 +50,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun checkUser() {
-        ///TODO("checkUser||เซ็คกผู้ใช้งาน")
+        ///TODO("checkUser||เซ็กผู้ใช้งาน")
         //check user is logged in or not
         val firebaseUser = firebaseAuth.currentUser
         //create id user to firebaseRealtime
